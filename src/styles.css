@@ -1,0 +1,590 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  text-align: center;
+  /* background: rgba(255, 197, 143, .2); */
+  /* background-color: #ffa339; */
+  color: white !important;
+    /* background-color: black;
+
+    background-color: darkslategray; */
+  /* background: rgba(255, 197, 143);
+    opacity: .8; */
+}
+html, body {
+  margin: 0;
+  margin-top: 5px;
+  width:  100%;
+  height: 100%;
+}
+
+button {
+    font-size: 14px !important;
+}
+ html {
+   text-align: center;
+ }
+ .hidden {
+   opacity: 0 !important;
+ }
+.hover-red:hover {
+  color: red;
+}
+.cdk-overlay-pane {
+  position: fixed !important;
+  margin: auto !important; 
+  left:40% !important;
+  top: 30% !important;
+  background: white;
+}
+/* .mat-select-panel {
+  background: white;
+  margin-top: -700px !important;
+} */
+.cdk-overlay-connected-position-bounding-box .cdk-overlay-pane{
+  margin-top: -255% !important;
+  margin-right: -100% !important;
+  margin-left: 400% !important;
+}
+
+.material-text {
+color: rgb(0, 0, 0);
+/* color: white; */
+
+font-family: system-ui;
+font-weight: 400;
+font-size: 18px !important;
+}
+/* html:before {
+    position: fixed;
+    width: 100%; height: 100%;
+    background-color: #ffe139da;
+    opacity: .1;
+    pointer-events: none;
+    content: ' ';
+    z-index: 99999;
+  }
+
+  html {
+    filter: brightness(0.9);
+  } */
+
+/* html:before {
+    position: fixed;
+    width: 100%; 
+    height: 100%;
+    background-color: rgb(255, 60, 60);
+    opacity: .2;
+    pointer-events: none;
+    content: ' ';
+    z-index: 99999;
+  } */
+
+/* html:before {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 147, 41);
+  opacity: .1;
+  pointer-events: none;
+  content: ' ';
+  z-index: 99999;
+}
+
+html:before {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(252, 167, 82);
+  opacity: .2;
+  pointer-events: none;
+  content: ' ';
+  z-index: 99999;
+} */
+
+/* html:after {
+    position: fixed;
+    width: 100%; 
+    height: 100%;
+    background-color: orange;
+    opacity: .2;
+    pointer-events: none;
+    content: ' ';
+    z-index: 99999;
+  } */
+
+.margin-auto {
+  margin: auto;
+}
+
+.loading-position {
+  margin: 0px;
+  padding: 0px;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  /* Light grey */
+  border-top: 8px solid red;
+  /* Blue */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
+  animation: spin 1.5s linear infinite;
+}
+
+.loader.small {
+  border: 4px solid #f3f3f3;
+  /* Light grey */
+  border-top: 4px solid red;
+  top: calc(50% - 10px);
+  left: calc(50% - 10px);
+  width: 20px;
+  height: 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+a:hover {
+  color: red;
+}
+button .edit {
+  padding-left: 0 !important;
+}
+
+
+button.edit.mat-button {
+  padding-left: 0px !important;
+}
+.inline {
+  display: inline !important;
+}
+
+.on-hover-trash {
+  opacity: 0 !important;
+}
+.float-right {
+  float: right !important;
+}
+
+.visibile {
+  opacity: 1 !important;
+}
+
+
+.invisible {
+  opacity: 0 !important;
+}
+
+.display-none {
+  display: none !important;
+}
+.invisible {
+  visibility: hidden !important;
+}
+.on-hover-trash:hover {
+  visibility: visible;
+  opacity: 1 !important;
+  color: red;
+}
+.on-hover-trash .show {
+  visibility: visible;
+  opacity: 1 !important;
+  color: red;
+}
+
+.show.on-hover-trash {
+  visibility: visible;
+  opacity: 1 !important;
+  color: red;
+}
+
+
+
+.material-icons {
+  cursor: pointer;
+}
+
+.selected {
+  border: 2px solid red;
+  box-sizing: border-box;
+}
+
+.on-hover-outline:hover {
+  border: 2px solid red;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  /* remove scrollbar space */
+  background: transparent;
+  /* optional: just make scrollbar invisible */
+}
+
+.mat-stroked-button {
+  background-color: transparent;
+}
+
+.cdk-overlay-connected-position-bounding-box {
+  max-width:288px !important;
+  left: 0px !important;
+  top: -20px !important;
+
+  min-width: 288px !important; 
+  transform: translateX(-16px) translateY(-40px)
+  /* pointer-events: auto !important;
+  font-size: 16px !important;
+  transform: translateX(-16px) !important;
+  top: -20px !important;
+  left: 741px !important; */
+}
+.md-stroked-button.md-stroked-focused {
+  background-color: rgba(0,0,0,0) !important;
+}
+.cdk-focused {
+  background-color: rgba(0,0,0,0) !important;
+}
+.cdk-program-focused {
+  background-color: rgba(0,0,0,0) !important;
+}
+.heart {
+  font-size: 22.5px !important;
+  color: red;
+}
+.name:hover {
+  color: red !important;
+}
+.mat-grid-list {
+   padding-bottom: 0!important;
+   margin-top: 0 !important; 
+   overflow: scroll !important;
+}
+
+input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+input:focus {
+  outline: none;
+}
+.tile {
+  height: 25px;
+  width:  25px;
+  padding: 5px;
+  border: 2px rgb(0, 0, 0) solid;
+  position: relative;
+  /* background-position: top;  */
+  background-size: 50px auto; 
+}
+.tile:hover {
+  border: 2px red solid;
+}
+
+.tile:hover:after {
+  opacity: 1;
+}
+
+.hover {
+  opacity: 0;
+
+}
+
+.upload {
+  position: absolute;
+  width:100%;
+  height: 100%;
+  top: 0; 
+  left: 0;
+  bottom: 0;
+  padding: 0;
+  transition: all .5s;
+  -webkit-transition: all .5s;
+  text-align: center;
+}
+.tile:hover> .upload {
+  background:rgba(189, 195, 199, .6);
+  transition: all 1s;
+  -webkit-transition: all .5s;
+}
+
+
+.tile:hover> .hover {
+  transition: all .5s;
+  -webkit-transition: all .5s;
+  opacity: 1;
+}
+input:hover::before {
+  border-color: red
+}
+
+.arabesque {
+  background-image: url('assets/arabesque_pattern.jpg');
+}
+
+.van {
+  background-image: url('assets/van_tile.jpg');
+}
+.frieze {
+   background-image: url('assets/frieze_tile.jpg');
+}
+.trunks {
+  background-image: url('assets/trunks_tile.png');
+}
+.mexico {
+   background-image: url('assets/mexico_flag_tile.jpg');
+}
+.kosovo  {
+   background-image: url('assets/kosovo_map_tile.jpg');
+}
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  /* Styles */
+  .canvas-height {
+    height: 704.680851px;
+  }
+ }
+   /* Smartphones (landscape) ----------- */
+  @media only screen and (min-width : 321px) {
+  /* Styles */
+  .canvas-height {
+    height: 704.680851px;
+  }
+  /* .mat-grid-list {
+    margin-left: 5%;
+  } */
+  
+  }
+   /* Smartphones (portrait) ----------- */
+  @media only screen and (max-width : 320px) {
+  /* Styles */
+  .canvas-height {
+    height: 704.680851px;
+  }
+  }
+   /* iPads (portrait and landscape) ----------- */
+  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  /* Styles */
+  .canvas-height {
+    height: 704.680851px;
+  }
+  }
+   /* iPads (landscape) ----------- */
+  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+  /* Styles */
+  .canvas-height {
+    height: 704.680851px;
+  }
+
+  }
+   /* iPads (portrait) ----------- */
+  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+  /* Styles */
+  .canvas-height {
+    height: 704.680851px;
+  }
+  }
+  /**********
+  iPad 3
+  **********/
+  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+  /* Styles */
+  .canvas-height {
+    height: 704.680851px;
+  }
+  }
+   @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+  /* Styles */
+  .canvas-height {
+    height: 704.680851px;
+  }
+  }
+  /* Desktops and laptops ----------- */
+  @media only screen  and (min-width : 1224px) {
+  /* Styles */
+  .canvas-height {
+    height: 704.680851px;
+  }
+  }
+
+    /* Desktops and laptops ----------- */
+    @media only screen  and (min-width : 1224px) and (max-width :1700px) {
+      /* Styles */
+      .canvas-height {
+        height: 804.680851px;
+      }
+    
+    }
+  .full-height {
+    height: 900.425532px;
+  }
+  /* input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
+    color: white !important;
+  } */
+   /* Large screens ----------- */
+  @media only screen  and (min-width : 1824px) {
+  /* Styles */
+  .canvas-height {
+    /* height: 900.425532px; */
+
+    height: 843.297px;
+
+    /* 810.3829788px; */
+  }
+
+  }
+   /* iPhone 4 ----------- */
+  @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+  /* Styles */
+  .canvas-height {
+    height: 440.425532px;
+  }
+  .cdk-overlay-pane {
+    left:5% !important;
+  }
+  }
+   @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+  /* Styles */
+  .canvas-height {
+    height: 440.425532px;
+  }
+  .cdk-overlay-pane {
+    left:5% !important;
+  }
+  }
+   /* iPhone 5 ----------- */
+  @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+  /* Styles */
+  .canvas-height {
+    height: 516.765957px;
+  }
+  .cdk-overlay-pane {
+    left:5% !important;
+  }
+  }
+   @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+  /* Styles */
+  .canvas-height {
+    height: 516.765957px;
+  }
+  .cdk-overlay-pane {
+    left:5% !important;
+  }
+  }
+   /* iPhone 6 ----------- */
+  @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+  /* Styles */
+  .canvas-height {
+    height: 613.659574px;
+  }
+  .cdk-overlay-pane {
+    left:5% !important;
+  }
+  }
+   @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+  /* Styles */
+  .canvas-height {
+    height: 613.659574px;
+  }
+  .cdk-overlay-pane {
+    left:5% !important;
+  }
+  }
+   /* iPhone 6+ ----------- */
+  @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+  /* Styles */
+  .canvas-height {
+    height: 681.191489px;
+  }
+  .cdk-overlay-pane {
+    left:5% !important;
+  }
+  }
+   @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+  /* Styles */
+  .canvas-height {
+    height: 681.191489px;
+  }
+  .cdk-overlay-pane {
+    left:5% !important;
+  }
+  }
+   /* Samsung Galaxy S3 ----------- */
+  @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+  /* Styles */
+  .canvas-height {
+    height: 587.234043px;
+  }
+  .cdk-overlay-pane {
+    left:5% !important;
+  }
+  }
+   @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+  /* Styles */
+  .canvas-height {
+    height: 587.234043px;
+  }
+  .cdk-overlay-pane {
+    left:5% !important;
+  }
+  }
+   /* Samsung Galaxy S4 ----------- */
+  @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
+  /* Styles */
+  .canvas-height {
+    height: 587.234043px;
+  }
+  .cdk-overlay-pane {
+    left:5% !important;
+  }
+  }
+   @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
+  /* Styles */
+  .canvas-height {
+    height: 587.234043px;
+  }
+  .cdk-overlay-pane {
+    left:5% !important;
+  }
+  }
+   /* Samsung Galaxy S5 ----------- */
+  @media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
+  /* Styles */
+  .canvas-height {
+    height: 587.234043px;
+  }
+  .cdk-overlay-pane {
+    left:5% !important;
+  }
+
+  }
+   @media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
+  /* Styles */
+  .canvas-height {
+    height: 587.234043px;
+  }
+  .cdk-overlay-pane {
+    left:5% !important;
+  }
+}
+  @media only screen and (min-device-width: 1336px) {
+    /* Styles */
+}

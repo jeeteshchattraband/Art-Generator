@@ -1,0 +1,276 @@
+<div fxLayout="column" fxFlexFill>
+  <div fxLayout="row" fxLayoutWrap>
+
+    <div fxFlex="40" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" fxFlexOffset="5" fxLayoutAlign="start center">
+      <div class="material-text" fxFlex fxLayoutAlign="start center">Art Generator</div>
+      <div fxFlex class="material-text" style="font-size: 14px !important" fxShow="true" fxShow.md="false" fxShow.sm="false" fxShow.xs="false"
+        *ngIf="!login" fxLayoutAlign="end center">Each piece is algorithmically unique.</div>
+    </div>
+
+    <div fxFlex>
+    <div fxFlex fxFlexOffset="7" fxShow="true" fxLayoutGap="5px" fxShow.md="false" fxShow.sm="false" fxShow.xs="false" fxLayoutAlign="start center">
+      <button [disabled]="!renderDone" (click)="getRandomArt(true)" class="float-left inline" mat-stroked-button>
+        Get New Art</button>
+      <a href="#" target="_blank" class="float-left inline" #downloadLink (click)="download(downloadLink)" download="art.jpg">
+        <button [disabled]="!renderDone" mat-stroked-button>
+          Save this art
+        </button>
+      </a>
+    </div>
+    <div fxFlex fxShow="true" fxLayoutAlign="end center">
+      <button (click)="openLoginModal()" mat-stroked-button>
+        <span [fxShow]="!login"> Sign In </span>
+      </button>
+      <span *ngIf="login">
+        <span fxFlexAlign="center">{{email}}</span>
+        <button fxFlex="5" (click)="signOut()" fxShow.md="false" fxShow.sm="false" fxShow.xs="false" mat-stroked-button>
+          <span> Sign Out </span>
+        </button>
+      </span>
+    </div>
+    <div fxFlex="6"></div>
+  </div>
+  </div>
+  <div fxFlexOffset="2" fxLayout="row" fxShow="false" fxShow.md="true" fxShow.sm="true" fxShow.xs="true" fxLayoutWrap>
+    <div fxFlex fxFlexOffset="5" fxLayoutAlign="start center"> Each piece is algorithmically unique.</div>
+    <div fxFlex="20" fxLayoutAlign="end center">
+
+
+      <button *ngIf="login" fxFlex="5" (click)="signOut()" mat-stroked-button>
+        <span> Sign Out </span>
+      </button>
+
+    </div>
+  </div>
+  <div fxFlexOffset="0" fxLayout="row" fxShow="false" fxShow.md="true" fxShow.sm="true" fxShow.xs="true" fxLayoutWrap>
+    <div fxFlexOffset="4" fxFlex="60" fxLayoutAlign="start center" fxLayoutGap="5">
+      <button [disabled]="!renderDone" (click)="getRandomArt(true)" class="float-left inline" mat-stroked-button>
+        Get New Art</button>
+      <a href="#" target="_blank" class="inline" #downloadLinkTwo (click)="download(downloadLinkTwo)" download="art.jpg">
+
+        <button [disabled]="!renderDone" mat-stroked-button>
+          Save this art
+        </button>
+      </a>
+    </div>
+    <div fxFlex="40" fxLayoutAlign="end center">
+
+      <span (click)="filterFavorites()" class="hover-red">
+        <i class="material-icons">
+          filter_list
+        </i>
+
+        <i [fxShow]="showFavorites" class="material-icons">
+          favorite
+        </i>
+        <i [fxShow]="!showFavorites" class="material-icons">
+          favorite_border
+        </i>
+      </span>
+    </div>
+  </div>
+
+  <div #mainContainer fxLayout="row" fxFlexOffset.md="0" fxFlexOffset.sm="0" fxFlexOffset.xs="0" fxLayout.md="column" fxLayout.sm="column"
+    fxLayout.xs="column" style="min-height: 450px">
+    <div fxFlexOffset.xl="5" fxFlexOffset.md="5" fxFlexOffset.lg="5" fxFlexOffset.md="0" fxFlexOffset.sm="0" fxFlex="40" fxFlex.md="25"
+      fxFlex.sm="20" fxFlex.xs="20" style="position: relative; overflow: scroll !important;">
+
+      <mat-grid-list [fxShow]="!showFavorites" class="canvas-height" cols="5" rows="5" gutterSize="5px">
+        <mat-grid-tile fxLayout="row" *ngFor="let savedImg of savedImageArr; let i = index;">
+
+          <img class="on-hover-outline" [ngClass]="{
+                  'selected': i === currImageIndex
+                }" (click)="renderImage(i)" style="height: 100%; width: 100%; float: left;" [(src)]="savedImageArr[i]['src']"
+          />
+          <span style="position: absolute; right: 0; bottom: 0" fxLayout="row">
+
+            <span [fxShow.lg]="true" [fxShow.md]="true" [fxShow.sm]="false" [fxShow.xs]="false">
+
+              <i (click)="openDeleteDialog(savedImg, i)" class="material-icons on-hover-trash heart">
+                delete
+              </i>
+              <i (click)="saveToFavorites(savedImg, i)" class="material-icons on-hover-trash heart" [ngClass]="{
+                  'show': savedImg.favorite 
+                }">
+                favorite
+              </i>
+            </span>
+
+            <span [fxShow.xl]="false"  [fxShow.lg]="false" [fxShow.md]="false" [fxShow.sm]="true" [fxShow.xs]="true">
+              <i (click)="openDeleteDialog(savedImg, i)" class="material-icons heart">
+                delete_outline
+              </i>
+              <i (click)="saveToFavorites(savedImg, i)" class="material-icons heart">
+                {{ savedImg.favorite ? 'favorite' : 'favorite_border'}}
+              </i>
+            </span>
+          </span>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+
+      <mat-grid-list [fxShow]="showFavorites" class="canvas-height" cols="5" rows="5" gutterSize="5px">
+        <mat-grid-tile *ngFor="let savedImg of favoritesArr; let i = index;">
+
+          <img class="on-hover-outline" [ngClass]="{
+                  'selected': i === currImageIndex
+                }" (click)="renderImage(i)" style="height: 100%; width: 100%; float: left;" [(src)]="savedImg.src" />
+          <span style="position: absolute; right: 0; bottom: 0" fxLayout="row">
+
+            <span [fxShow.lg]="true" [fxShow.md]="true" [fxShow.sm]="false" [fxShow.xs]="false">
+
+              <i (click)="openDeleteDialog(savedImg, i)" class="material-icons on-hover-trash">
+                delete
+              </i>
+              <i (click)="saveToFavorites(savedImg, i)" class="material-icons on-hover-trash heart" [ngClass]="{
+                          'show': savedImg.favorite 
+                        }">
+                favorite
+              </i>
+            </span>
+
+
+            <span [fxShow.lg]="false" [fxShow.md]="false" [fxShow.sm]="true" [fxShow.xs]="true">
+              <i (click)="openDeleteDialog(savedImg, i)" class="material-icons">
+                delete_outline
+              </i>
+              <i (click)="saveToFavorites(savedImg, i)" class="material-icons heart">
+                {{ savedImg.favorite ? 'favorite' : 'favorite_border'}}
+              </i>
+            </span>
+          </span>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+
+      <!--<button fxFlex="5" fxFlex.xs="20" fxShow="false" fxShow.md="false" fxShow.sm="true" fxShow.xs="true"  fxFlexAlign="start start" style="height: 5%; max-width: 25px !important;  min-width: 25px !important; padding-left: 5px !important; padding-right: 5px !important" mat-button (click)="filterFavorites()"><i class="material-icons">
+  filter_list
+  </i>
+
+<i [fxShow]="showFavorites" class="material-icons">
+    favorite
+      </i>
+<i [fxShow]="!showFavorites" class="material-icons">
+          favorite_border
+            </i>
+</button>-->
+    </div>
+    <!-- fxFlex.md="85" fxFlex.sm="85" fxFlex.xs="85" -->
+    <div fxFlex>
+      <span fxFlex="7" style="text-align: left" fxShow.md="false" fxShow.sm="false" fxShow.xs="false" [fxShow]="ready" fxLayout="column"
+        fxLayoutAlign="start center">
+
+        <span class="hover-red material-text" fxShow.lg="true" fxShow.md="false" fxShow.sm="false" fxShow.xs="false" style="text-align: center; float: left;"
+         (click)="filterFavorites()"><i class="material-icons">
+            filter_list
+          </i>
+
+          <i [fxShow]="showFavorites" class="material-icons">
+            favorite
+          </i>
+          <i [fxShow]="!showFavorites" class="material-icons">
+            favorite_border
+          </i>
+        </span>
+
+
+        <span *ngIf="ready" fxLayout="column"
+        fxLayoutAlign="start center">
+        <span *ngFor="let customImage of customImages; let i = index" [ngStyle]="{'background-image': 'url(' + this.customImages[i]?.src + ')'}" class="tile">
+          <input type="file" multiple style="z-index: 3; position: absolute; top: 0; left: 0;  width: 100%; height: 100%" (change)="uploadCustomImage(i, $event)"
+            #fileInput>
+          <span class="upload hover" fxLayoutAlign="center end">
+            <i [fxShow]="customImage.ready" class="material-icons heart" style="margin-top: auto; bottom: 0">
+              arrow_upward
+            </i>
+          </span>
+
+          <span [fxShow]="!customImage.ready" class="upload" fxLayoutAlign="center end">
+            <div class="margin-auto loader small" ></div>
+
+          </span>
+          <span [fxShow]="customImage.fileTooBig" class="upload" style="background:rgba(189, 195, 199, .6)" fxLayoutAlign="end center" fxLayout="column">
+            <i  class="material-icons heart" style="margin-top: auto; bottom: 0">
+                warning
+            </i>
+          </span>
+
+        </span>
+        </span>
+
+      </span>
+
+      <div style="position: relative;" fxLayout="start start">
+
+
+        <canvas #myCanvasTwo id="myCanvasTwo" class="canvas-height">
+          Your browser does not support the canvas element.
+        </canvas>
+
+        <canvas fxShow="false" #myCanvas id="myCanvas" class="hidden full-height">
+          Your browser does not support the canvas element.
+        </canvas>
+
+        <div [fxShow]="ready" style="position: absolute" #loaderCanvas class="margin-auto loader">
+        </div>
+      </div>
+
+
+    </div>
+    <!-- <div fxFlex="10" fxLayoutAlign="start start">
+<div class="edit">
+      <button (click)="toggleEdit()" style="margin-bottom: auto; padding-left: 0px !important;" class="float-left inline" mat-button>
+        <i *ngIf="!edit" class="material-icons">
+          edit
+        </i>
+        <i *ngIf="edit" class="material-icons">
+          save
+        </i>
+      </button>x
+
+
+      <span *ngIf="edit">
+        <br>
+            <button  (click)="getRandomArt(false, 1)" style="margin-bottom: auto; padding-left: 0px !important" class="float-left inline" mat-button>
+          <i class="material-icons">
+            add
+          </i>
+        </button>
+        <br>
+        <button [disabled]="disableUndoShape" (click)="undo()" style="margin-bottom: auto; padding-left: 0px !important" class="float-left inline" mat-button>
+          <i class="material-icons">
+            undo
+          </i>
+        </button>
+        <br>
+        <button [disabled]="disableRedoShape" (click)="redo()" style="padding-left: 0px !important" class="float-left inline" mat-button>
+          <i class="material-icons">
+            redo
+          </i>
+        </button>
+        <br>
+        <button (click)="saveCurrentArt(true, true)" class="float-left inline" style="padding-left: 0px !important" mat-button>
+          <i class="material-icons">
+            create_new_folder
+          </i>
+        </button>
+        <br>
+        <button (click)="openDeleteDialog(imgObj, currImageIndex)" class="float-left inline"style="padding-left: 0px !important"  mat-stroked-button>
+          <i class="material-icons">
+            delete
+          </i>
+        </button>
+
+      </span>
+    </div> 
+</div> -->
+    <!-- fxShow="false" fxShow.md="true" fxShow.sm="true" fxShow.xs="true"  -->
+
+  </div>
+  <div fxLayout="row" fxShow="true" fxShow.md="false" fxShow.sm="false" fxShow.xs="false" fxLayoutAlign="start start">
+    <span class="material-text" fxFlexOffset="5" style="font-size: 14px !important">art and code by <a href="https://github.com/kvanlaan"
+        class="name" target="_blank"> Jeetesh Chattraband</a></span>
+  </div>
+</div>
+<div [fxShow]="!ready" style="position: absolute" class="margin-auto loader">
+</div>
